@@ -46,3 +46,26 @@ class Lesson(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Checkout(models.Model):
+    lesson = models.ForeignKey(
+        Lesson,
+        on_delete=models.CASCADE,
+        verbose_name="Материал теста",
+        related_name="lessons",
+    )
+    question = models.TextField(verbose_name="Вопрос")
+    answer_first = models.CharField(max_length=200, verbose_name="Ответ_1", null=False)
+    answer_second = models.CharField(max_length=200, verbose_name="Ответ_2", null=False)
+    answer_third = models.CharField(max_length=200, verbose_name="Ответ_3", null=True)
+    right_answer = models.CharField(
+        max_length=200, verbose_name="Правильный ответ", null=False
+    )
+
+    class Meta:
+        verbose_name = "Тест"
+        verbose_name_plural = "Тесты"
+
+    def __str__(self):
+        return self.question

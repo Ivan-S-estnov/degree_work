@@ -6,9 +6,9 @@ from rest_framework.generics import (
     RetrieveAPIView,
     DestroyAPIView,
 )
-from docs.models import Course, Lesson
+from docs.models import Course, Lesson, Checkout
 from docs.paginators import CustomPagination
-from docs.serializers import CourseSerializer, LessonSerializer
+from docs.serializers import CourseSerializer, LessonSerializer, CheckoutSerializer
 
 
 class CourseViewSet(ModelViewSet):
@@ -16,10 +16,12 @@ class CourseViewSet(ModelViewSet):
     pagination_class = CustomPagination
     serializer_class = CourseSerializer
 
+
     def perform_create(self, serializer):
         course = serializer.save()
         course.owner = self.request.user
         course.save()
+
 
 class LessonCreateAPIView(CreateAPIView):
     queryset = Lesson.objects.all()
@@ -45,3 +47,29 @@ class LessonRetrieveAPIView(RetrieveAPIView):
 class LessonDestroyAPIView(DestroyAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+
+
+class CheckoutCreateAPIView(CreateAPIView):
+    queryset = Checkout.objects.all()
+    serializer_class = CheckoutSerializer
+
+
+class CheckoutListAPIView(ListAPIView):
+    queryset = Checkout.objects.all()
+    serializer_class = CheckoutSerializer
+    pagination_class = CustomPagination
+
+
+class CheckoutUpdateAPIView(UpdateAPIView):
+    queryset = Checkout.objects.all()
+    serializer_class = CheckoutSerializer
+
+
+class CheckoutRetrieveAPIView(RetrieveAPIView):
+    queryset = Checkout.objects.all()
+    serializer_class = CheckoutSerializer
+
+
+class CheckoutDestroyAPIView(DestroyAPIView):
+    queryset = Checkout.objects.all()
+    serializer_class = CheckoutSerializer
