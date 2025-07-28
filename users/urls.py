@@ -10,7 +10,7 @@ from users.views import UserCreateApiView
 app_name = UsersConfig.name
 
 urlpatterns = [
-    path("check/", UserCreateApiView.as_view(), name="register"),
-    path("talk/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("new/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("register/", UserCreateApiView.as_view(), name="register"),
+    path('token/', TokenObtainPairView.as_view(), name='token'),
+    path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

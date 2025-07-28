@@ -12,19 +12,20 @@ from docs.views import (
     CheckoutRetrieveAPIView,
     CheckoutCreateAPIView,
     CheckoutUpdateAPIView,
-    CheckoutDestroyAPIView
+    CheckoutDestroyAPIView,
 )
 
 app_name = DocsConfig.name
 
 router = SimpleRouter()
 router.register("", CourseViewSet)
+
 urlpatterns = [
-    path("lesson/", LessonListAPIView.as_view(), name="list"),
-    path("lesson/<int:pk>/", LessonRetrieveAPIView.as_view(), name="retrieve"),
-    path("lesson/create/", LessonCreateAPIView.as_view(), name="create"),
-    path("lesson/<int:pk>/update/", LessonUpdateAPIView.as_view(), name="update"),
-    path("lesson/<int:pk>/delete/", LessonDestroyAPIView.as_view(), name="destroy"),
+    path("lesson/", LessonListAPIView.as_view(), name="lesson_list"),
+    path("lesson/<int:pk>/", LessonRetrieveAPIView.as_view(), name="lesson_retrieve"),
+    path("lesson/build/", LessonCreateAPIView.as_view(), name="lesson_build"),
+    path("lesson/<int:pk>/update/", LessonUpdateAPIView.as_view(), name="lesson_update"),
+    path("lesson/<int:pk>/delete/", LessonDestroyAPIView.as_view(), name="lesson_destroy"),
     path("test/", CheckoutListAPIView.as_view(), name="test_list"),
     path("test/<int:pk>/", CheckoutRetrieveAPIView.as_view(), name="test_retrieve"),
     path("test/create/", CheckoutCreateAPIView.as_view(), name="create_test"),

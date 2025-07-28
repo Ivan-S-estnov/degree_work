@@ -12,7 +12,6 @@ class Course(models.Model):
         null=True,
         help_text="Укажите владельца курса",
     )
-    # link = models.URLField(verbose_name="url-курса", blank=True, null=True)
 
     class Meta:
         verbose_name = "Курс"
@@ -38,7 +37,7 @@ class Lesson(models.Model):
         null=True,
         help_text="Укажите владельца урока",
     )
-    # link = models.URLField(verbose_name="url-урока", blank=True, null=True)
+
 
     class Meta:
         verbose_name = "Урок"
